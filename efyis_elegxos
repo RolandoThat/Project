@@ -1,0 +1,16 @@
+import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.neural_network import MLPRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from scipy.io import loadmat
+from mpl_toolkits.mplot3d import Axes3D
+path = os.path.join('F:' + os.sep, 'ECE', 'Ευφυής Έλεγχος', 'ergasia_2', 'data_NN.mat')
+dataset =loadmat(path)
+con_list = [[element for element in upperElement] for upperElement in dataset['x_train']]
+newData = list(zip(con_list[0], con_list[1], con_list[2]))
+columns = ['x1', 'x2', 'x3']
+df = pd.DataFrame(newData, columns=columns)
+print("Dataset is Built")
